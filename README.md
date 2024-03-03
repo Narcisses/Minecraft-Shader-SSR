@@ -57,7 +57,7 @@ vec2 newUV = trace(startPos, reflecDir, 0.0001, 100);
 One question that might arise when doing this is: Why don't we use ray tracing instead? Wy not directly calculate the hit point between the ray and the object in place of iteratively searching a hit?
 Here, we use ray marching because we only have access to the nearest fragments of the scene (depth field). The depth map can be seen as a distance field. There is no concept of geometry in the fragments. We only know for each fragment, how far away from us they happen to be. We could use a hybrid ray tracing technique where we are given the geometry of the scene, and we can use it to raytrace directly. However, this involves having stored in GPU memory the entire scene.
 
-## Thoughs
+## Thoughts
 
 Screen space reflection is a fast and easy-to-implement way to add reflections. It is independant of the scene geometry, but suffers visible artifacts because it only uses screen data to compute reflections. Any object partly or completely outside the screen will by clipped. For example, when the player looks at his feet, the objects in front of him will vanish from the water. However, Minecraft being a game with random terrains, it exploits this technique very well. Each water block will get reflections no matter what location they are unlike for the Planer reflection technique where y-location of the water block does matter.
 
